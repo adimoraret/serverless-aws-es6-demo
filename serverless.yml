@@ -1,0 +1,18 @@
+service: serverless-es6
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+  news:
+    handler: handler.news
+    events:
+      - http:
+          path: /news
+          method: get
+          
+custom:
+    webpackIncludeModules:
+      forceExclude:
+        - aws-sdk          
