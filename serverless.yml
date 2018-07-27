@@ -4,6 +4,9 @@ provider:
   name: aws
   runtime: nodejs8.10
 
+plugins:
+  - serverless-webpack
+
 functions:
   news:
     handler: handler.news
@@ -11,8 +14,8 @@ functions:
       - http:
           path: /news
           method: get
-          
+
 custom:
-    webpackIncludeModules:
-      forceExclude:
-        - aws-sdk          
+    webpack:
+      webpackConfig: 'webpack.config.js'
+      includeModules: false
